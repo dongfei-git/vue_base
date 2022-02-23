@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>el与data的两种写法</title>
+    <script type="text/javascript" src="../vue_js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <h1>你好，{{person.name}}</h1>
+</div>
+</body>
+<script type="text/javascript">
+    let number = 18
+    let person = {
+        name: 'jack',
+        sex: '男'
+    }
+
+    Object.defineProperty(person, 'age', {
+        // value: 19,
+        // enumerable: true, //控制属性是否可以被枚举
+        // writable: true,  //控制属性是否可以被修改
+        // configurable: true  //控制属性是否可以被删除
+        get() {
+            return number
+        },
+
+        set(v) {
+            number = v
+        }
+    })
+    console.log(person)
+
+    new Vue({
+        el: '#root',
+        data() {
+            return {
+                person
+            };
+        }
+    })
+</script>
+
+</html>

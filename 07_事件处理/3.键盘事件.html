@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>el与data的两种写法</title>
+    <script type="text/javascript" src="../vue_js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <input type="text" placeholder="按下回车提示输入" @keyup.enter="showInfo">
+        <input type="text" placeholder="按下回车提示输入" @keyup.huiche="showInfo">
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    Vue.config.keyCodes.huiche = 13
+
+    new Vue({
+        el:'#root',
+        data:{
+
+        },
+        methods:{
+            showInfo(e){
+                console.log(e.target.value, e.keyCode, e.key)
+            }
+        }
+    })
+</script>
+
+</html>

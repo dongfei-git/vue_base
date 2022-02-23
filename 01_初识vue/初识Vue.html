@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>初识Vue</title>
+    <script type="text/javascript" src="../vue_js/vue.js"></script>
+</head>
+<body>
+
+<div id="root">
+    <h1>hello {{name}}</h1>
+</div>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false  // 阻止Vue在启动时生成生产提示
+
+    new Vue({
+        el: '#root', //用于指定当前Vue实例为那个容器服务，值通常为css选择器字符串
+        data: { //data中用于存储数据，数据供el所指的容器使用
+            name: 'jack'
+        }
+    })
+</script>
+</body>
+</html>

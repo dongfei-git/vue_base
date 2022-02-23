@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>el与data的两种写法</title>
+    <script type="text/javascript" src="../vue_js/vue.js"></script>
+    <style>
+        * {
+            margin-top: 20px;
+        }
+
+        .demo1 {
+            height: 50px;
+            background-color: skyblue;
+        }
+
+        .box1 {
+            padding: 5px;
+            background-color: skyblue;
+        }
+
+        .box2 {
+            padding: 5px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <h1>你好，{{name}}</h1>
+    <!--    阻止默认事件-->
+    <a href="http://www.baidu.com" @click.prevent="showInfo">百度</a>
+
+    <!--    阻止事件冒泡-->
+    <div class="demo1" @click="showInfo">
+        <button @click.stop="showInfo">点我demo1</button>
+    </div>
+
+    <!--    事件只触发一次-->
+    <button @click.once="showInfo">点我demo2</button>
+
+    <!--    事件的捕获模式-->
+    <div class="box1" @click.capture="showMsg(1)">
+        div1
+        <div class="box2" @click="showMsg(2)">
+            div2
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+
+    new Vue({
+        el: '#root',
+        data: {},
+        methods: {
+            showInfo() {
+                alert("hello")
+            },
+            showMsg(e) {
+                console.log(e)
+            }
+        }
+    })
+</script>
+
+</html>
