@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件渲染</title>
+</head>
+<body>
+  <div id="app">
+<!--使用v-show做条件渲染-->
+    <h2 v-show="flag">hello {{name}}</h2>
+    <br>
+<!--使用v-if做条件渲染-->
+    <h2 v-if="flag2">hello {{name}}</h2>
+
+    <h2>当前n值是：{{n}}</h2>
+    <button @click="n++">n+1</button>
+
+    <div v-show="n === 1">Angular</div>
+    <div v-show="n === 2">React</div>
+    <div v-show="n === 3">Vue</div>
+
+    <div v-if="n === 1">Angular</div>
+    <div v-else-if="n === 2">React</div>
+    <div v-else-if="n === 3">Vue</div>
+
+    <template v-if="n === 1">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+    </template>
+  </div>
+</body>
+<script src="../vue_js/vue.js"></script>
+<script>
+  new Vue({
+    el:'#app',
+    data() {
+      return {
+        name:'Vue',
+        flag:true,
+        flag2:false,
+        n:0
+      }
+    }
+  })
+</script>
+</html>
