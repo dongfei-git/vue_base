@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-once指令</title>
+    <script type="text/javascript" src="../vue_js/vue.js"></script>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        // 初次动态渲染然后后变成静态内容了
+        <h2 v-once>初始化的n值是: {{n}}</h2>
+        <h2>当前n值是: {{n}}</h2>
+        <button @click="n++">n+1</button>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+
+    new Vue({
+        el:'#root',
+        data:{
+            n:1
+        }
+    })
+</script>
+
+</html>

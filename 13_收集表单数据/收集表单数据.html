@@ -5,6 +5,59 @@
     <title>收集表单数据</title>
 </head>
 <body>
-<a href="https://www.bilibili.com/video/BV1Zy4y1K7SH?p=38&spm_id_from=pageDriver"></a>
+<div id="root">
+    <form @submit.prevent="submit">
+        账号：<input type="text" v-model.trim="account"> <br><br>
+        密码：<input type="password" v-model="password"> <br><br>
+        年龄：<input type="number" v-model.number="age"> <br><br>
+        性别：
+        男<input type="radio" name="sex" v-model="sex" value="male">
+        女<input type="radio" name="sex" v-model="sex" value="female">
+        <br><br>
+        爱好：
+        学习<input type="checkbox" v-model="hobby" value="study">
+        游戏<input type="checkbox" v-model="hobby" value="game">
+        跑步<input type="checkbox" v-model="hobby" value="runner">
+        <br><br>
+        所属校区
+        <select v-model="city">
+            <option value="">请选择校区</option>
+            <option value="Beijing">北京</option>
+            <option value="Shanghai">上海</option>
+            <option value="Guangzhou">广州</option>
+        </select>
+        <br><br>
+        其他信息：
+        <textarea v-model.lazy="other"></textarea>
+        <br><br>
+        <input type="checkbox" v-model="agree">阅读并接受<a href="http://www.baidu.com">《用户协议》</a>
+        <button>提交</button>
+    </form>
+</div>
 </body>
+
+<script src="../vue_js/vue.js"></script>
+<script>
+
+    new Vue({
+        el:'#root',
+        data:{
+            account:'',
+            password:'',
+            age:'',
+            sex:'male',
+            hobby:[],
+            city:'Beijing',
+            other:'',
+            agree:false
+        },
+        methods:{
+            submit(){
+                console.log(JSON.stringify(this._data))
+                alert('提交成功')
+            }
+        }
+    })
+
+</script>
 </html>

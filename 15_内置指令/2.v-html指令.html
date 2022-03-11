@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-html指令</title>
+    <script type="text/javascript" src="../vue_js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div v-html="str"></div>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+
+    new Vue({
+        el:'#root',
+        data:{
+            str:'<h3>你好</h3>'
+        }
+    })
+</script>
+
+</html>

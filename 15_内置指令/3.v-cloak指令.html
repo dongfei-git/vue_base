@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-cloak指令</title>
+    <script type="text/javascript" src="../vue_js/vue.js"></script>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+<!--        vue接管容器后会删除v-cloak属性-->
+        <h1 v-cloak>{{name}}</h1>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+
+    new Vue({
+        el:'#root',
+        data:{
+            name:'helloWorld'
+        }
+    })
+</script>
+
+</html>
