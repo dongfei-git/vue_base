@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件基本使用</title>
+</head>
+<body>
+<div id="root">
+</div>
+</body>
+
+<script src="../vue_js/vue.js"></script>
+<script>
+
+    //创建组件(简写写法)
+    const student = {
+        template: `
+          <div>
+          <h2>学生姓名：{{ studentName }}</h2>
+          <h2>学生年龄：{{ schoolAge }}</h2>
+          </div>
+        `,
+        data() {
+            return {
+                studentName: '张三',
+                schoolAge: '25'
+            }
+        }
+    }
+
+    //创建组件(标准写法)
+    const school = Vue.extend({
+        template: `
+          <div>
+          <h2>学校名称：{{ schoolName }}</h2>
+          <h2>学校地址：{{ schoolAddress }}</h2>
+          <button @click="showName">点我显示学校名</button>
+          <student></student>
+          </div>
+        `,
+        data() {
+            return {
+                schoolName: '刑法学院',
+                schoolAddress: '北京'
+            }
+        },
+        methods: {
+            showName() {
+                alert(this.schoolName)
+            }
+        },
+        // 组件嵌套
+        components: {
+            student
+        }
+    })
+
+    const hello = {
+        template: `
+        <div>
+            <h1>msg: hello</h1>
+        </div>
+        `
+    }
+
+    // 定义app组件
+    const app = Vue.extend({
+        template: `
+        <div>
+            <hello></hello>
+            <school></school>
+        </div>
+        `,
+        components:{
+            hello,
+            school
+        }
+    })
+
+
+    new Vue({
+        template:`<app></app>`,
+        el: '#root',
+        // 注册组件(局部注册)
+        components: {
+            app
+        }
+    })
+</script>
+
+</html>
