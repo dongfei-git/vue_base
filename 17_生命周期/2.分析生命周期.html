@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>生命周期</title>
+    <script type="text/javascript" src="../vue_js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <h2>当前的n值是：{{n}}</h2>
+    <button @click="add">n+1</button>
+    <button @click="bye">销毁vm</button>
+</div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+
+    new Vue({
+        el: '#root',
+        data: {
+            n: 1
+        },
+        methods:{
+            add(){
+                this.n++
+            },
+            bye(){
+                this.$destroy()
+            }
+        },
+        beforeCreate(){
+            console.log('beforeCreate')
+            console.log(this) //此时this中没有data
+            debugger
+        },
+        created(){
+            console.log('created')
+            console.log(this)
+            debugger
+        },
+        beforeMount(){
+            console.log('beforeMount')
+            console.log(this)
+            debugger
+        },
+        mounted(){  // 重要！！！
+            console.log('mounted')
+            console.log(this)
+            debugger
+        },
+        beforeUpdate(){
+            console.log('beforeUpdate')
+            console.log(this)
+            debugger
+        },
+        updated(){
+            console.log('updated')
+            console.log(this)
+            debugger
+        },
+        beforeDestroy(){  // 重要！！！
+            console.log('beforeDestroy')
+            console.log(this)
+            debugger
+        },
+        destroyed(){
+            console.log('destroyed')
+            console.log(this)
+            debugger
+        }
+    })
+</script>
+
+</html>

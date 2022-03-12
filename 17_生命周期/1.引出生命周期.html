@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>生命周期</title>
+    <script type="text/javascript" src="../vue_js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <h2 :style="{opacity}">欢迎学习vue</h2>
+</div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            opacity: 1
+        },
+        mounted() {
+            setInterval(() => {
+                this.opacity -= 0.01
+                if (this.opacity <= 0) this.opacity = 1
+            }, 16)
+        }
+    })
+
+
+</script>
+
+</html>
